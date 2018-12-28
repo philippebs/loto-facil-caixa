@@ -18,7 +18,7 @@ def printValues(dados):
 # The first tr contains the field names.
 #headings = [th.get_text().strip() for th in table.find("tr").find_all("th")]
 def createListNumber():
-	arquivo = open(path, 'r')
+	arquivo = open(path, 'r', encoding='iso-8859-1')
 	soup = BeautifulSoup(arquivo.read(), "html.parser")
 	table = soup.find("table")
 	datasets = []
@@ -30,4 +30,4 @@ def createListNumber():
 	arquivo.close()
 	return datasets
 
-#printValues(createListNumber())
+printValues(createListNumber())
