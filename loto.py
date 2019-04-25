@@ -1,10 +1,12 @@
 #!/usr/bin/python
 from bs4 import BeautifulSoup
 
+import downloadLotoCaixa
+
 arquivo = None
 soup = None
 
-path = './D_LOTFAC.HTM'
+path = './d_lotfac.htm'
 
 def findValueTD(row):
 	return [td.get_text() for td in row.find_all("td")]
@@ -25,9 +27,14 @@ def createListNumber():
 	for row in table.find_all("tr"):
 		dataset = findValueTD(row)
 		if len(dataset) > 18:
-			datasets.append(findNumber(dataset))
+			dataset = findNumber(dataset)
+			dataset.sort()
+			datasets.append(dataset)
 
 	arquivo.close()
+	#print(datasets)
 	return datasets
 
-printValues(createListNumber())
+if __name__ == '__main__':
+	downloadLotoCaixa.download_descompactar()
+	printValues(createListNumber())
