@@ -51,9 +51,6 @@ if __name__ == '__main__':
 	#print(todos_numeros)
 
 
-
 #print(contador)
-
 #loto.printValues(todos_numeros)
-
 #datasets = loto.createListNumber()
